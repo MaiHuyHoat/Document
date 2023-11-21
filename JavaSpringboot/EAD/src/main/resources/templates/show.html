@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.pinimg.com/originals/b4/2d/7b/b42d7bd363ce206cc6925214bbad47e9.jpg" type="image/x-icon">
+    <title>Edit User</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Link CSS của Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <img
+                        src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                        height="15"
+                        alt="MDB Logo"
+                        loading="lazy"
+                />
+            </a>
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/List">List User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Add">Add User</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+        <div class="d-flex align-items-center">
+            <!-- Icon -->
+            <a class="text-reset me-3" href="#">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+
+            <!-- Notifications -->
+            <div class="dropdown">
+                <a
+                        class="text-reset me-3 dropdown-toggle hidden-arrow"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                >
+                    <i class="fas fa-bell"></i>
+                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                </a>
+                <ul
+                        class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownMenuLink"
+                >
+                    <li>
+                        <a class="dropdown-item" href="#">Some news</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Another news</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Avatar -->
+            <div class="dropdown">
+                <a
+                        class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                        href="#"
+                        id="navbarDropdownMenuAvatar"
+                        role="button"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                >
+                    <img
+                            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                            class="rounded-circle"
+                            height="25"
+                            alt="Black and White Portrait of a Man"
+                            loading="lazy"
+                    />
+                </a>
+                <ul
+                        class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownMenuAvatar"
+                >
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<div class="container mt-5">
+    <form th:action="@{/update/{id} (id=${candidate.getId()}) }" th:object="${candidate}" method="post">
+        <h2>Edit Student</h2>
+        <div>
+            <div class="form-group">
+                <label>Avatar</label>
+                <input type="url" th:field="*{avatar}" class="form-control" th:value="${candidate.avatar}"   required>
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" th:field="*{name}" class="form-control" th:value="${candidate.name}"    required>
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" th:field="*{phone}" class="form-control"  th:value="${candidate.phone}"   required>
+                <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger" ></span>
+            </div>
+
+            <div class="form-group">
+                <label>Date Of Birth</label>
+                <input type="date" th:field="*{dateofbirth}"  class="form-control" th:value="${candidate.dateofbirth}"    required>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <select th:field="*{gender}">
+                    <option  value="1" th:selected="${candidate.gender}==true" >Male</option>
+                    <option  value="0" th:selected="${candidate.gender}==false" >FeMale</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" th:field="*{address}" th:value="${candidate.address}"  class="form-control"   required>
+            </div>
+            <div class="form-group">
+                <label>Academy Level</label>
+                <input type="text" th:field="*{academylevel}" th:value="${candidate.academylevel}" class="form-control"  >
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="submit" class="btn btn-primary" value="Save">
+        </div>
+
+
+    </form>
+    ``
+
+</div>
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-facebook-f"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-twitter"></i
+            ></a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-google"></i
+            ></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-instagram"></i
+            ></a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-linkedin-in"></i
+            ></a>
+
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-github"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Form -->
+        <section class="">
+            <form action="">
+                <!--Grid row-->
+                <div class="row d-flex justify-content-center">
+                    <!--Grid column-->
+                    <div class="col-auto">
+                        <p class="pt-2">
+                            <strong>Sign up for our newsletter</strong>
+                        </p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-5 col-12">
+                        <!-- Email input -->
+                        <div class="form-outline form-white mb-4">
+                            <input type="email" id="form5Example21" class="form-control" />
+                            <label class="form-label" for="form5Example21">Email address</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-auto">
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-outline-light mb-4">
+                            Subscribe
+                        </button>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </form>
+        </section>
+        <!-- Section: Form -->
+
+        <!-- Section: Text -->
+        <section class="mb-4">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                eum harum corrupti dicta, aliquam sequi voluptate quas.
+            </p>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Links -->
+        <section class="">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<script type="text/javascript">
+function  PreviewImage(){
+    var link=$("#imageLink").val();
+    var img=$("#UserAvatar");
+    img.attr('src',link);
+}
+</script>
+<!-- Include Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿@model Consume_API.Models.coingecko.DataReturn
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index" method="post" asp-controller="CoinGecko">
+    <select asp-for="@Model.category" asp-items="@Model.CategoryList">
+        <option selected>Choose Category</option>
+    </select>
+    <select asp-for="@Model.ids" asp-items="@Model.CoinList">
+        <option selected>Choose Coin</option>
+    </select>
+    <button type="submit" name="submit">Search</button>
+</form> 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                symbol
+            </th>
+            <th>
+                name
+            </th>
+            <th>
+                current_price
+            </th>
+            <th>
+                market_cap
+            </th>
+            <th>
+                price_change_24h
+            </th>
+            <th>
+                price_change_percentage_24h)
+            </th>
+            <th>
+                market_cap_change_24h)
+            </th>
+            <th>
+                market_cap_change_percentage_24h)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Markets)
+        {
+            <tr>
+                <td>
+                    <img src=@item.image width=50 height=50 />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.symbol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.market_cap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price_change_24h)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price_change_percentage_24h)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.market_cap_change_24h)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.market_cap_change_percentage_24h)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,3 @@
+﻿1. Install-Package Microsoft.EntityFrameworkCore.Tools
+2. Install-Package Microsoft.EntityFrameworkCore.SqlServer
+3. Scaffold-DbContext "Data Source=.;Initial Catalog=DemoDbFirst;Integrated Security=True;TrustServerCertificate=Yes" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entites -f
