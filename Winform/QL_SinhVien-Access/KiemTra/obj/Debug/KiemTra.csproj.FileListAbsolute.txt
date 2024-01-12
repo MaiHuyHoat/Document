@@ -1,0 +1,10 @@
+F:\Dai_Hoc\Ky_8\LTWin\KiemTra\KiemTra\bin\Debug\KiemTra.exe
+F:\Dai_Hoc\Ky_8\LTWin\KiemTra\KiemTra\bin\Debug\KiemTra.pdb
+F:\Dai_Hoc\Ky_8\LTWin\KiemTra\KiemTra\obj\Debug\ResolveAssemblyReference.cache
+F:\Dai_Hoc\Ky_8\LTWin\KiemTra\KiemTra\obj\Debug\KiemTra.Main.resources
+F:\Dai_Hoc\Ky_8\LTWin\KiemTra\KiemTra\obj\Debug\KiemTra.Properties.Resources.resources
+F:\Dai_Hoc\Ky_8\LTWin\KiemTra\KiemTra\obj\Debug\KiemTra.csproj.GenerateResource.Cache
+F:\Dai_Hoc\Ky_8\LTWin\KiemTra\KiemTra\obj\Debug\KiemTra.exe
+F:\Dai_Hoc\Ky_8\LTWin\KiemTra\KiemTra\obj\Debug\KiemTra.pdb
+F:\Dai_Hoc\Ky_8\LTWin\QL_SinhVien-Access\KiemTra\obj\Debug\KiemTra.exe
+F:\Dai_Hoc\Ky_8\LTWin\QL_SinhVien-Access\KiemTra\obj\Debug\KiemTra.pdb
